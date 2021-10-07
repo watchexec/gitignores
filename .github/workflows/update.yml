@@ -36,11 +36,11 @@ jobs:
         with:
           command: run
           args: |
-            --manifest-path updater/Cargo.toml \
-            -- \
-            --output . \
-            --cargo-toml-base gitignores.toml \
-            --gitignores-repo gitignores \
+            --manifest-path updater/Cargo.toml
+            --
+            --output .
+            --cargo-toml-base gitignores.toml
+            --gitignores-repo gitignores
             --gh-env-file "$GITHUB_ENV"
 
       - name: Check generated code
