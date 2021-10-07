@@ -1,7 +1,7 @@
 use std::{
 	collections::BTreeMap,
 	ffi::OsStr,
-	fs::File,
+	fs::{File, OpenOptions},
 	io::{Read, Write},
 	path::{Path, PathBuf},
 };
@@ -163,6 +163,11 @@ fn main() -> Result<()> {
 	let mut new_cargo_toml = File::create(&args.output.join("Cargo.toml"))?;
 	new_cargo_toml.write_all(&bytes)?;
 	eprintln!("Cargo.toml: {} bytes written", len);
+
+	if let Some(gh) = args.gh_env_file {
+		let mut gh_env = OpenOptions::new().create(true).write(true).open(gh)?;
+		gh_env.write_all(format!("new_version={}\n", new_version).as_bytes())?;
+	}
 
 	Ok(())
 }

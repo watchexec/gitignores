@@ -242,6 +242,7 @@ root-yii = []
 root-zend-framework = []
 root-zephir = []
 std = []
+stdx = []
 
 [package]
 description = "GitHub’s collection of gitignores, embedded, automatically updated"
