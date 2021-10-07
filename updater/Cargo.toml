@@ -1,26 +1,12 @@
 [package]
-name = "gitignores"
+name = "gitignores-updater"
 version = "1.0.0"
+publish = false
+edition = "2018"
 
 authors = ["Félix Saparelli <felix@passcod.name>"]
-license = "CC0-1.0"
-description = "GitHub’s collection of gitignores, embedded, automatically updated"
-keywords = ["gitignore", "embed", "git"]
-categories = ["development-tools", "filesystem", "no-std"]
-
-documentation = "https://docs.rs/gitignores"
-homepage = "https://watchexec.github.io/#gitignores"
-repository = "https://github.com/watchexec/gitignores"
-readme = "README.md"
-
-edition = "2018"
-exclude = ["/.github", "/updater"]
-
-[features]
-default = ["community", "global", "root"]
-community = []
-global = []
-root = []
+license = "Apache-2.0 OR MIT"
+description = "Updater for the gitignores crate"
 
 [dependencies]
 color-eyre = "0.5.11"

@@ -266,7 +266,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f0a01e0497841a3b2db4f8afa483cce65f7e96a3498bd6c541734792aeac8fe7"
 
 [[package]]
-name = "gitignores"
+name = "gitignores-updater"
 version = "1.0.0"
 dependencies = [
  "color-eyre",
