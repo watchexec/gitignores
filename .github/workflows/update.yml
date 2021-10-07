@@ -33,7 +33,6 @@ jobs:
 
       - name: Run updater
         uses: actions-rs/cargo@v1
-        working_directory: updater
         with:
           command: run
           args: |
