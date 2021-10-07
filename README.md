@@ -1,6 +1,6 @@
 [![Crate release version](https://flat.badgen.net/crates/v/gitignores)][crate]
 [![Crate license: CC0-1.0](https://flat.badgen.net/badge/license/CC0-1.0)][copyright]
-![MSRV: 1.31.0 (breaking)](https://flat.badgen.net/badge/MSRV/1.31.0%20%28breaking%29/green)
+![MSRV: 1.37.0 (breaking)](https://flat.badgen.net/badge/MSRV/1.37.0%20%28breaking%29/green)
 [![CI status](https://github.com/watchexec/gitignores/actions/workflows/check.yml/badge.svg)](https://github.com/watchexec/gitignores/actions/workflows/check.yml)
 
 # Gitignores
@@ -9,7 +9,7 @@ _GitHub’s collection of gitignores, embedded, automatically updated._
 
 - **[API documentation][docs]**.
 - [Public Domain][copyright] via CC0-1.0 (same as [source data][gh-gitignore]).
-- **MSRV: 1.31.0** (the first release in the 2018 edition)
+- **MSRV: 1.37.0** (increases are breaking changes)
 - Doesn't require std.
 - No dependencies.
 - Works offline.
