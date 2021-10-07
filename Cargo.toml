@@ -242,7 +242,6 @@ root-yii = []
 root-zend-framework = []
 root-zephir = []
 std = []
-stdx = []
 
 [package]
 description = "GitHub’s collection of gitignores, embedded, automatically updated"
@@ -257,7 +256,7 @@ authors = ["Félix Saparelli <felix@passcod.name>"]
 categories = ["development-tools", "filesystem", "no-std"]
 exclude = ["/.github", "/updater", "/gitignores"]
 keywords = ["gitignore", "embed", "git"]
-version = "0.0.0"
+version = "1.0.0"
 [package.metadata.gitignores]
 commit = "b0012e4930d0a8c350254a3caeedf7441ea286a3"
-content_hash = "296e8eded0fff91b34838bc453bc2a09344c5bcf66123ff572e565904df6950x"
+content_hash = "296e8eded0fff91b34838bc453bc2a09344c5bcf66123ff572e565904df6950b"
