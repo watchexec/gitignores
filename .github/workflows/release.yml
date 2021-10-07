@@ -18,6 +18,11 @@ jobs:
           profile: minimal
           override: true
       - uses: actions-rs/cargo@v1
+        name: Login
+        with:
+          command: login
+          args: "${{ secrets.CARGO_TOKEN }}"
+      - uses: actions-rs/cargo@v1
         name: Publish
         with:
           command: publish
