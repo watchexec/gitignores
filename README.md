@@ -11,6 +11,7 @@ _GitHub’s collection of gitignores, embedded, automatically updated._
 - [Public Domain][copyright] via CC0-1.0 (same as [source data][gh-gitignore]).
 - **MSRV: 1.31.0** (the first release in the 2018 edition)
 - Doesn't require std.
+- No dependencies.
 - Works offline.
 
 [crate]: https://lib.rs/crates/gitignores
@@ -35,9 +36,9 @@ Each gitignore is available as a variant of one of three enums:
 
 ```rust
 (
-    gitignores::Root::Rust,
-    gitignores::Global::Emacs,
-    gitignores::Community::Racket,
+	gitignores::Root::Rust,
+	gitignores::Global::Emacs,
+	gitignores::Community::Racket,
 )
 ```
 
@@ -53,25 +54,26 @@ The enums also implement a `GitIgnore` trait:
 
 ```rust
 trait GitIgnore {
-    /// The contents of the gitignore
-    const fn contents(self) -> &'static str;
-    // returns an empty string if the `no-contents` feature is enabled
+	/// The contents of the gitignore
+	///
+	/// Returns an empty string if the `no-contents` feature is enabled.
+	fn contents(self) -> &'static str;
 
-    /// The file name of the gitignore
-    const fn file_name(self) -> &'static str;
+	/// The file name of the gitignore
+	fn file_name(self) -> &'static str;
 
-    /// The full path of the gitignore relative to repo root
-    const fn file_path(self) -> &'static str;
+	/// The full path of the gitignore relative to repo root
+	fn file_path(self) -> &'static str;
 
-    /// The git reference of the last commit on the gitignore file
-    const fn ref(self) -> &'static str;
-
-    /// The URL to the raw file on GitHub
-    const fn href(self) -> &'static str;
-
-    /// The list of all included gitignores
-    const fn list() -> &'static [&'static str];
+	/// The list of all included gitignores
+	fn list() -> Vec<&'static str>;
 }
+```
+
+Finally, there is a constant with the git reference of the commit the crate was built from:
+
+```rust
+dbg!(gitignores::GIT_COMMIT_REF);
 ```
 
 
