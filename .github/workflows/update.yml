@@ -70,7 +70,7 @@ jobs:
 
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
-        if: "${{ startsWith('v', env.new_version) }}"
+        if: "${{ env.new_version }}"
         with:
           commit_message: Auto release ${{ env.new_version }}
-          tagging_message: "${{ env.new_version }}"
+          tagging_message: "v${{ env.new_version }}"
