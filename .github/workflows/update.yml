@@ -44,6 +44,16 @@ jobs:
             --gitignores-repo ../gitignores \
             --gh-env-file "$GITHUB_ENV"
 
+      - name: Check generated code
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+
+      - name: Format
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+
       - name: Install MSRV
         uses: actions-rs/toolchain@v1
         with:
