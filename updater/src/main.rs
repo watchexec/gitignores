@@ -168,6 +168,7 @@ fn main() -> Result<()> {
 	eprintln!("Cargo.toml: {} bytes written", len);
 
 	if let Some(gh) = args.gh_env_file {
+		eprintln!("writing new version to env: {:?}", gh);
 		let mut gh_env = OpenOptions::new().create(true).write(true).open(gh)?;
 		gh_env.write_all(format!("new_version={}\n", new_version).as_bytes())?;
 	}
