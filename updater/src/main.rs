@@ -44,9 +44,6 @@ fn main() -> Result<()> {
 	args.output = canonicalize(args.output)?;
 	args.cargo_toml_base = canonicalize(args.cargo_toml_base)?;
 	args.gitignores_repo = canonicalize(args.gitignores_repo)?;
-	if let Some(gh) = args.gh_env_file.take() {
-		args.gh_env_file = Some(canonicalize(gh)?);
-	}
 
 	let repo = Repository::open(&args.gitignores_repo)?;
 	let commit = repo.head()?.peel_to_commit()?.id().to_string();
