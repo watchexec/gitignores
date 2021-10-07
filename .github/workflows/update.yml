@@ -24,6 +24,12 @@ jobs:
           profile: minimal
           override: true
 
+      - name: Build updater
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --manifest-path updater/Cargo.toml
+
       - name: Clone github/gitignores
         uses: actions/checkout@v2
         with:
@@ -32,15 +38,12 @@ jobs:
           ref: master
 
       - name: Run updater
-        uses: actions-rs/cargo@v1
-        with:
-          command: run
-          args: |
-            --manifest-path updater/Cargo.toml
-            --
-            --output .
-            --cargo-toml-base updater/gitignores.toml
-            --gitignores-repo gitignores
+        run: |
+          set -euxo pipefail
+          updater/target/debug/gitignores-updater \
+            --output . \
+            --cargo-toml-base updater/gitignores.toml \
+            --gitignores-repo gitignores \
             --gh-env-file "$GITHUB_ENV"
 
       - name: Check generated code
