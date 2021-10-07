@@ -1,6 +1,6 @@
 [![Crate release version](https://flat.badgen.net/crates/v/gitignores)][crate]
 [![Crate license: CC0-1.0](https://flat.badgen.net/badge/license/CC0-1.0)][copyright]
-![MSRV: 1.51.0 (breaking)](https://flat.badgen.net/badge/MSRV/1.51.0%20%28breaking%29/green)
+![MSRV: 1.31.0 (breaking)](https://flat.badgen.net/badge/MSRV/1.31.0%20%28breaking%29/green)
 [![CI status](https://github.com/watchexec/gitignores/actions/workflows/check.yml/badge.svg)](https://github.com/watchexec/gitignores/actions/workflows/check.yml)
 
 # Gitignores
@@ -9,6 +9,7 @@ _GitHub’s collection of gitignores, embedded, automatically updated._
 
 - **[API documentation][docs]**.
 - [Public Domain][copyright] via CC0-1.0 (same as [source data][gh-gitignore]).
+- **MSRV: 1.31.0** (the first release in the 2018 edition)
 - Doesn't require std.
 - Works offline.
 
@@ -126,6 +127,7 @@ It will bump the major version (breaking release) when:
 - Gitignores disappear from a collection
 - Gitignores move from a collection to another
 - Gitignores are renamed
+- The minimum required Rust version increases
 
 It will bump the minor version when:
 - New gitignores are added to a collection
