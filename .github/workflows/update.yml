@@ -27,7 +27,7 @@ jobs:
       - name: Clone github/gitignores
         uses: actions/checkout@v2
         with:
-          repo: github/gitignore
+          repository: github/gitignore
           path: gitignores
           ref: master
 
