@@ -4,8 +4,8 @@
 ///
 /// ```
 /// use std::path::Path;
-/// use gitignore::Gitignore;
-/// fn ignored(file: impl AsRef<Path>, gitignore: impl Gitignore) -> bool { false }
+/// use gitignores::GitIgnore;
+/// fn ignored(file: impl AsRef<Path>, gitignore: impl GitIgnore) -> bool { false }
 /// ```
 pub trait GitIgnore {
 	/// The contents of the gitignore
@@ -20,5 +20,6 @@ pub trait GitIgnore {
 	fn file_path(self) -> &'static str;
 
 	/// The list of all included gitignores
+	#[cfg(feature = "std")]
 	fn list() -> Vec<&'static str>;
 }

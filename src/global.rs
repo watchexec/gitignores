@@ -428,6 +428,7 @@ impl GitIgnore for Global {
 		}
 	}
 
+	#[cfg(feature = "std")]
 	fn list() -> Vec<&'static str> {
 		#[allow(unused_mut)]
 		let mut list = Vec::with_capacity(67);

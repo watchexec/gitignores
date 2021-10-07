@@ -9,6 +9,7 @@ license = "Apache-2.0 OR MIT"
 description = "Updater for the gitignores crate"
 
 [dependencies]
+blake3 = "1.0.0"
 color-eyre = "0.5.11"
 dunce = "1.0.2"
 git2 = "0.13.22"

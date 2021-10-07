@@ -4,7 +4,6 @@ community-altium-designer = []
 community-aws-sam = []
 community-bazel = []
 community-dot-net-infor-cms = []
-std = []
 community-dot-net-kentico = []
 community-elixir-phoenix = []
 community-embedded-atmel-studio = []
@@ -242,6 +241,7 @@ root-yeoman = []
 root-yii = []
 root-zend-framework = []
 root-zephir = []
+std = []
 
 [package]
 description = "GitHub’s collection of gitignores, embedded, automatically updated"
@@ -259,4 +259,4 @@ keywords = ["gitignore", "embed", "git"]
 version = "1.0.0"
 [package.metadata.gitignores]
 commit = "b0012e4930d0a8c350254a3caeedf7441ea286a3"
-content_hash = 6352828712303446137
+content_hash = "296e8eded0fff91b34838bc453bc2a09344c5bcf66123ff572e565904df6950b"

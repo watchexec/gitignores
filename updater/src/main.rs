@@ -1,5 +1,12 @@
-use std::{ffi::OsStr, fs::File, io::{Read, Write}, path::{PathBuf, Path}, collections::{BTreeMap, hash_map::DefaultHasher}, hash::{Hash, Hasher}};
+use std::{
+	collections::BTreeMap,
+	ffi::OsStr,
+	fs::File,
+	io::{Read, Write},
+	path::{Path, PathBuf},
+};
 
+use blake3::Hasher;
 use color_eyre::eyre::{eyre, Result};
 use dunce::canonicalize;
 use git2::Repository;
@@ -45,12 +52,15 @@ fn main() -> Result<()> {
 	let commit = repo.head()?.peel_to_commit()?.id().to_string();
 
 	let mut entries = Vec::with_capacity(512);
-	for path in WalkDir::new(&args.gitignores_repo).follow_links(true).into_iter().filter_map(|e| e.ok().and_then(|e| {
-		match e.path() {
-			path if path.extension() == Some(OsStr::new("gitignore")) => Some(path.to_owned()),
-			_ => None,
-		}
-	})) {
+	for path in WalkDir::new(&args.gitignores_repo)
+		.follow_links(true)
+		.into_iter()
+		.filter_map(|e| {
+			e.ok().and_then(|e| match e.path() {
+				path if path.extension() == Some(OsStr::new("gitignore")) => Some(path.to_owned()),
+				_ => None,
+			})
+		}) {
 		entries.push(GitIgnore::new(&path, &args.gitignores_repo, &commit)?);
 	}
 
@@ -59,29 +69,68 @@ fn main() -> Result<()> {
 	features.insert("no-contents".to_string(), Vec::new());
 	features.insert("std".to_string(), Vec::new());
 
-	let mut content_hash = DefaultHasher::new();
+	let mut content_hash = Hasher::new();
 
 	entries.sort_by_key(|e| e.feature.clone());
 	for (name, variants) in &entries.into_iter().group_by(|e| e.collection.clone()) {
 		let collection = Collection::new(&name, variants);
-		let mut module = File::create(&args.output.join("src").join(name.to_snake_case()).with_extension("rs"))?;
+		let mut module = File::create(
+			&args
+				.output
+				.join("src")
+				.join(name.to_snake_case())
+				.with_extension("rs"),
+		)?;
 		module.write_all(collection.generate_module().as_bytes())?;
 		features.extend(collection.feature_list());
 		default_features.push(collection.feature.clone());
-		collection.hash(&mut content_hash);
+
+		for variant in &collection.variants {
+			content_hash.update(variant.contents.as_bytes());
+		}
 	}
 
-	let content_hash = content_hash.finish();
+	let content_hash = content_hash.finalize().to_string();
+
+	let mut gitref_mod = File::create(&args.output.join("src").join("gitref.rs"))?;
+	gitref_mod.write_all(
+		format!(
+			"
+	/// The git commit hash of the gitignore repository when this crate was generated.
+	pub const GIT_COMMIT_REF: &str = {:?};
+
+	/// The BLAKE3 hash of the contents of every file in generator order.
+	pub const CONTENT_HASH: &str = {:?};
+	",
+			commit, content_hash
+		)
+		.as_bytes(),
+	)?;
+
 	features.insert("default".to_string(), default_features);
 
 	let cargo_toml = read_toml(&args.output.join("Cargo.toml"))?;
 	let version = Version::parse(&cargo_toml.package.version)?;
 
-	let features_removed = cargo_toml.features.iter().filter(|(k, _)| !features.contains_key(k.to_owned())).next().is_some();
-	let features_added = features.iter().filter(|(k, _)| !cargo_toml.features.contains_key(k.to_owned())).next().is_some();
-	let content_changed = features_removed || features_added || content_hash != cargo_toml.package.metadata.gitignores.content_hash;
+	let features_removed = cargo_toml
+		.features
+		.iter()
+		.filter(|(k, _)| !features.contains_key(k.to_owned()))
+		.next()
+		.is_some();
+	let features_added = features
+		.iter()
+		.filter(|(k, _)| !cargo_toml.features.contains_key(k.to_owned()))
+		.next()
+		.is_some();
+	let content_changed = features_removed
+		|| features_added
+		|| content_hash != cargo_toml.package.metadata.gitignores.content_hash;
 
-	eprintln!("features removed: {:?}\nfeatures added: {:?}\ncontent hash changed: {:?}", features_removed, features_added, content_changed);
+	eprintln!(
+		"features removed: {:?}\nfeatures added: {:?}\ncontent hash changed: {:?}",
+		features_removed, features_added, content_changed
+	);
 	eprintln!("current version: {}", version);
 
 	let mut new_version = version.clone();
@@ -159,7 +208,7 @@ struct Metadata {
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 struct GitIgnoresMetadata {
 	commit: String,
-	content_hash: u64,
+	content_hash: String,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
@@ -179,10 +228,19 @@ impl GitIgnore {
 		let file_path = rel_path.display().to_string();
 		assert_eq!(Path::new(&file_path), rel_path);
 
-		let file_name = rel_path.file_name().ok_or_else(|| eyre!("no filename: {:?}", &path))?.to_string_lossy().to_string();
+		let file_name = rel_path
+			.file_name()
+			.ok_or_else(|| eyre!("no filename: {:?}", &path))?
+			.to_string_lossy()
+			.to_string();
 		let mut segs = rel_path.components();
 
-		let mut collection = segs.next().ok_or_else(|| eyre!("no parent: {:?}", &path))?.as_os_str().to_string_lossy().to_string();
+		let mut collection = segs
+			.next()
+			.ok_or_else(|| eyre!("no parent: {:?}", &path))?
+			.as_os_str()
+			.to_string_lossy()
+			.to_string();
 		let mut variant = segs.as_path().to_string_lossy().to_string();
 
 		if collection.ends_with(".gitignore") {
@@ -190,12 +248,19 @@ impl GitIgnore {
 			collection = String::from("Root");
 		}
 
-		let variant = variant.trim_end_matches(".gitignore").replace("#", "Sharp").replace("+", "Plus").to_string();
+		let variant = variant
+			.trim_end_matches(".gitignore")
+			.replace("#", "Sharp")
+			.replace("+", "Plus")
+			.to_string();
 		let feature = format!("{}-{}", collection, variant);
 
 		Ok(Self {
 			contents: std::fs::read_to_string(&path)?,
-			href: format!("https://raw.githubusercontent.com/github/gitignore/{}/{}", commit, file_path),
+			href: format!(
+				"https://raw.githubusercontent.com/github/gitignore/{}/{}",
+				commit, file_path
+			),
 			file_name,
 			file_path,
 			collection: collection.to_camel_case(),
@@ -213,7 +278,7 @@ struct Collection {
 }
 
 impl Collection {
-	fn new(name: &str, variants: impl Iterator<Item=GitIgnore>) -> Self {
+	fn new(name: &str, variants: impl Iterator<Item = GitIgnore>) -> Self {
 		let variants = variants.collect::<Vec<_>>();
 		let feature = name.to_kebab_case();
 
@@ -225,7 +290,8 @@ impl Collection {
 	}
 
 	fn generate_module(&self) -> String {
-		format!("
+		format!(
+			"
 		use crate::GitIgnore;
 
 		#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -250,6 +316,7 @@ impl Collection {
 				match self {{ {file_paths} }}
 			}}
 
+			#[cfg(feature = \"std\")]
 			fn list() -> Vec<&'static str> {{
 				#[allow(unused_mut)]
 				let mut list = Vec::with_capacity({len});
@@ -265,19 +332,62 @@ impl Collection {
 			}}
 		}}
 		",
-		name=self.name,
-		len=self.variants.len(),
-		variants=self.variants.iter().map(|v| format!("#[cfg(feature = \"{}\")] {}", v.feature, v.variant)).collect::<Vec<_>>().join(", "),
-		contents=self.variants.iter().map(|v| format!("#[cfg(feature = \"{}\")] Self::{} => {:?}", v.feature, v.variant, v.contents)).collect::<Vec<_>>().join(", "),
-		file_names=self.variants.iter().map(|v| format!("#[cfg(feature = \"{}\")] Self::{} => {:?}", v.feature, v.variant, v.file_name)).collect::<Vec<_>>().join(", "),
-		file_paths=self.variants.iter().map(|v| format!("#[cfg(feature = \"{}\")] Self::{} => {:?}", v.feature, v.variant, v.file_path)).collect::<Vec<_>>().join(", "),
-		list=self.variants.iter().map(|v| format!("#[cfg(feature = \"{}\")] list.push({:?});", v.feature, v.variant)).collect::<Vec<_>>().join(" "),
+			name = self.name,
+			len = self.variants.len(),
+			variants = self
+				.variants
+				.iter()
+				.map(|v| format!("#[cfg(feature = \"{}\")] {}", v.feature, v.variant))
+				.collect::<Vec<_>>()
+				.join(", "),
+			contents = self
+				.variants
+				.iter()
+				.map(|v| format!(
+					"#[cfg(feature = \"{}\")] Self::{} => {:?}",
+					v.feature, v.variant, v.contents
+				))
+				.collect::<Vec<_>>()
+				.join(", "),
+			file_names = self
+				.variants
+				.iter()
+				.map(|v| format!(
+					"#[cfg(feature = \"{}\")] Self::{} => {:?}",
+					v.feature, v.variant, v.file_name
+				))
+				.collect::<Vec<_>>()
+				.join(", "),
+			file_paths = self
+				.variants
+				.iter()
+				.map(|v| format!(
+					"#[cfg(feature = \"{}\")] Self::{} => {:?}",
+					v.feature, v.variant, v.file_path
+				))
+				.collect::<Vec<_>>()
+				.join(", "),
+			list = self
+				.variants
+				.iter()
+				.map(|v| format!(
+					"#[cfg(feature = \"{}\")] list.push({:?});",
+					v.feature, v.variant
+				))
+				.collect::<Vec<_>>()
+				.join(" "),
 		)
 	}
 
 	fn feature_list(&self) -> BTreeMap<String, Vec<String>> {
 		let mut map = BTreeMap::new();
-		map.insert(self.feature.clone(), self.variants.iter().map(|v| v.feature.clone()).collect::<Vec<_>>());
+		map.insert(
+			self.feature.clone(),
+			self.variants
+				.iter()
+				.map(|v| v.feature.clone())
+				.collect::<Vec<_>>(),
+		);
 		for variant in &self.variants {
 			map.insert(variant.feature.clone(), Vec::new());
 		}

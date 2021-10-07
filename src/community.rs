@@ -278,6 +278,7 @@ impl GitIgnore for Community {
 		}
 	}
 
+	#[cfg(feature = "std")]
 	fn list() -> Vec<&'static str> {
 		#[allow(unused_mut)]
 		let mut list = Vec::with_capacity(42);
