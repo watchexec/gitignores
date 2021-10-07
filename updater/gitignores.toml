@@ -1,0 +1,17 @@
+[package]
+name = "gitignores"
+version = "1.0.0"
+
+authors = ["Félix Saparelli <felix@passcod.name>"]
+license = "CC0-1.0"
+description = "GitHub’s collection of gitignores, embedded, automatically updated"
+keywords = ["gitignore", "embed", "git"]
+categories = ["development-tools", "filesystem", "no-std"]
+
+documentation = "https://docs.rs/gitignores"
+homepage = "https://watchexec.github.io/#gitignores"
+repository = "https://github.com/watchexec/gitignores"
+readme = "README.md"
+
+edition = "2018"
+exclude = ["/.github", "/updater", "/gitignores"]

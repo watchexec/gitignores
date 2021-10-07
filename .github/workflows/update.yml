@@ -1,0 +1,52 @@
+name: Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '38 13 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            updater/target
+          key: ${{ runner.os }}-cargo-and-updater-${{ hashFiles('.github/workflows/*.yml') }}
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          target: ${{ matrix.target }}
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Clone github/gitignores
+        uses: actions/checkout@v2
+        with:
+          repo: github/gitignore
+          path: gitignores
+          ref: master
+
+      - name: Run updater
+        uses: actions-rs/cargo@v1
+        working_directory: updater
+        with:
+          command: run
+          args: |
+            --manifest-path updater/Cargo.toml \
+            -- \
+            --output .. \
+            --cargo-toml-base gitignores.toml \
+            --gitignores-repo ../gitignores \
+            --gh-env-file "$GITHUB_ENV"
+
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: "${{ startsWith('v', env.new_version) }}"
+        with:
+          commit_message: Auto release ${{ env.new_version }}
+          tagging_message: "${{ env.new_version }}"
