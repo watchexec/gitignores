@@ -38,9 +38,9 @@ jobs:
           args: |
             --manifest-path updater/Cargo.toml \
             -- \
-            --output .. \
+            --output . \
             --cargo-toml-base gitignores.toml \
-            --gitignores-repo ../gitignores \
+            --gitignores-repo gitignores \
             --gh-env-file "$GITHUB_ENV"
 
       - name: Check generated code
