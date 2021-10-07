@@ -41,13 +41,16 @@ fn main() -> Result<()> {
 	color_eyre::install()?;
 	let mut args = Args::from_args();
 
+	eprintln!("resolving paths...");
 	args.output = canonicalize(args.output)?;
 	args.cargo_toml_base = canonicalize(args.cargo_toml_base)?;
 	args.gitignores_repo = canonicalize(args.gitignores_repo)?;
 
+	eprintln!("opening repo {:?}...", args.gitignores_repo);
 	let repo = Repository::open(&args.gitignores_repo)?;
 	let commit = repo.head()?.peel_to_commit()?.id().to_string();
 
+	eprintln!("walking gitignores...");
 	let mut entries = Vec::with_capacity(512);
 	for path in WalkDir::new(&args.gitignores_repo)
 		.follow_links(true)
@@ -68,6 +71,7 @@ fn main() -> Result<()> {
 
 	let mut content_hash = Hasher::new();
 
+	eprintln!("organising collections...");
 	entries.sort_by_key(|e| e.feature.clone());
 	for (name, variants) in &entries.into_iter().group_by(|e| e.collection.clone()) {
 		let collection = Collection::new(&name, variants);
@@ -87,8 +91,8 @@ fn main() -> Result<()> {
 		}
 	}
 
+	eprintln!("finishing hash...");
 	let content_hash = content_hash.finalize().to_string();
-
 	let mut gitref_mod = File::create(&args.output.join("src").join("gitref.rs"))?;
 	gitref_mod.write_all(
 		format!(
@@ -106,9 +110,11 @@ fn main() -> Result<()> {
 
 	features.insert("default".to_string(), default_features);
 
+	eprintln!("reading {:?}/Cargo.toml...", args.output);
 	let cargo_toml = read_toml(&args.output.join("Cargo.toml"))?;
 	let version = Version::parse(&cargo_toml.package.version)?;
 
+	eprintln!("checking compatibility...");
 	let features_removed = cargo_toml
 		.features
 		.iter()
@@ -125,7 +131,7 @@ fn main() -> Result<()> {
 		|| content_hash != cargo_toml.package.metadata.gitignores.content_hash;
 
 	eprintln!(
-		"features removed: {:?}\nfeatures added: {:?}\ncontent hash changed: {:?}",
+		"---\nfeatures removed: {:?}\nfeatures added: {:?}\ncontent hash changed: {:?}",
 		features_removed, features_added, content_changed
 	);
 	eprintln!("current version: {}", version);
