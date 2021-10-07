@@ -45,6 +45,7 @@ jobs:
             --cargo-toml-base updater/gitignores.toml \
             --gitignores-repo gitignores \
             --gh-env-file "$GITHUB_ENV"
+          rm -rf gitignores
 
       - name: Check generated code
         uses: actions-rs/cargo@v1
