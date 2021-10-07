@@ -68,6 +68,9 @@ trait GitIgnore {
 
     /// The URL to the raw file on GitHub
     const fn href(self) -> &'static str;
+
+    /// The list of all included gitignores
+    const fn list() -> &'static [&'static str];
 }
 ```
 
