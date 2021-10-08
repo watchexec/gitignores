@@ -75,3 +75,6 @@ jobs:
         with:
           commit_message: Auto release ${{ env.new_version }}
           tagging_message: "v${{ env.new_version }}"
+  release:
+    needs: update
+    uses: watchexec/gitignores/.github/workflows/release.yml@main
