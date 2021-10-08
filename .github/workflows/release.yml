@@ -3,6 +3,9 @@ name: Release
 on:
   workflow_dispatch:
   workflow_call:
+    secrets:
+      CARGO_TOKEN:
+        required: true
   push:
     tags:
       - v*.*.*
@@ -27,4 +30,3 @@ jobs:
         name: Publish
         with:
           command: publish
-        continue-on-error: true # will error when there's nothing to do

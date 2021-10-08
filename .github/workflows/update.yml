@@ -75,6 +75,17 @@ jobs:
         with:
           commit_message: Auto release ${{ env.new_version }}
           tagging_message: "v${{ env.new_version }}"
+
+      - name: Output
+        id: output
+        run: echo "::set-output name=has_new_version::${{ contains(env.new_version, '.') }}"
+    outputs:
+      has_new_version: "${{ steps.output.outputs.has_new_version }}"
   release:
-    needs: update
     uses: watchexec/gitignores/.github/workflows/release.yml@main
+    needs:
+      update:
+        outputs:
+          has_new_version: "true"
+    secrets:
+      CARGO_TOKEN: "${{ secrets.CARGO_TOKEN }}"
