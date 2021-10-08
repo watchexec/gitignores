@@ -27,3 +27,4 @@ jobs:
         name: Publish
         with:
           command: publish
+        continue-on-error: true # will error when there's nothing to do
