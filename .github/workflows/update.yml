@@ -30,12 +30,12 @@ jobs:
           command: build
           args: --manifest-path updater/Cargo.toml
 
-      - name: Clone github/gitignores
+      - name: Clone github/gitignore
         uses: actions/checkout@v2
         with:
           repository: github/gitignore
           path: gitignores
-          ref: master
+          ref: main
 
       - name: Run updater
         run: |
