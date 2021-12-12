@@ -261,6 +261,7 @@ impl GitIgnore {
 			.trim_end_matches(".gitignore")
 			.replace("#", "Sharp")
 			.replace("+", "Plus")
+			.replace(".", "")
 			.to_string();
 		let feature = format!("{}-{}", collection, variant);
 
