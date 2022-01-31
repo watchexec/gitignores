@@ -1,5 +1,5 @@
 [features]
-community = ["community-altium-designer", "community-auto-it", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-linux-snap", "community-logtalk", "community-nasa-specs-intact", "community-open-ssl", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-v", "community-xilinx"]
+community = ["community-altium-designer", "community-auto-it", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-linux-snap", "community-logtalk", "community-nasa-specs-intact", "community-nix", "community-open-ssl", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-v", "community-xilinx"]
 community-altium-designer = []
 community-auto-it = []
 community-aws-sam = []
@@ -30,6 +30,7 @@ community-lens-studio = []
 community-linux-snap = []
 community-logtalk = []
 community-nasa-specs-intact = []
+community-nix = []
 community-open-ssl = []
 community-php-bitrix = []
 community-php-code-sniffer = []
@@ -267,7 +268,7 @@ authors = ["Félix Saparelli <felix@passcod.name>"]
 categories = ["development-tools", "filesystem", "no-std"]
 exclude = ["/.github", "/updater", "/gitignores"]
 keywords = ["gitignore", "embed", "git"]
-version = "2.0.1"
+version = "2.1.0"
 [package.metadata.gitignores]
-commit = "752b7678db497edb377fa982ded0c70035393794"
-content_hash = "80cd837740057077ef382b22b937b454184537bd803f48a19ec31f3fa76127e4"
+commit = "8ea9c647018521ab2a9c78d630a2fb6579e16d37"
+content_hash = "9b47c0027dfb80961e2d97888424a975e268ea262080f3af5a059640cd922030"
