@@ -2,9 +2,9 @@
 //!
 //! ```
 //! dbg!(
-//! 	gitignores::Root::Rust,
-//! 	gitignores::Global::Emacs,
-//! 	gitignores::Community::Racket,
+//!     gitignores::Root::Rust,
+//!     gitignores::Global::Emacs,
+//!     gitignores::Community::Racket,
 //! );
 //! ```
 //!
@@ -21,19 +21,19 @@
 //!
 //! ```
 //! trait GitIgnore {
-//! 	/// The contents of the gitignore
-//! 	///
-//! 	/// Returns an empty string if the `no-contents` feature is enabled.
-//! 	fn contents(self) -> &'static str;
+//!     /// The contents of the gitignore
+//!     ///
+//!     /// Returns an empty string if the `no-contents` feature is enabled.
+//!     fn contents(self) -> &'static str;
 //!
-//! 	/// The file name of the gitignore
-//! 	fn file_name(self) -> &'static str;
+//!     /// The file name of the gitignore
+//!     fn file_name(self) -> &'static str;
 //!
-//! 	/// The full path of the gitignore relative to repo root
-//! 	fn file_path(self) -> &'static str;
+//!     /// The full path of the gitignore relative to repo root
+//!     fn file_path(self) -> &'static str;
 //!
-//! 	/// The list of all included gitignores
-//! 	fn list() -> Vec<&'static str>;
+//!     /// The list of all included gitignores
+//!     fn list() -> Vec<&'static str>;
 //! }
 //! ```
 //!
@@ -109,6 +109,7 @@
 //! - Gitignore contents change
 
 #![cfg_attr(not(feature = "std"), no_std)]
+#![allow(clippy::vec_init_then_push)]
 
 #[doc(inline)]
 pub use common::*;
