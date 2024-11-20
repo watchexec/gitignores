@@ -1,5 +1,5 @@
 [features]
-community = ["community-alteryx", "community-altium-designer", "community-auto-it", "community-aws-cdk", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-hexo", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-linux-snap", "community-logtalk", "community-move", "community-nasa-specs-intact", "community-nix", "community-open-ssl", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-terragrunt", "community-toit", "community-ui-path", "community-v", "community-xilinx"]
+community = ["community-alteryx", "community-altium-designer", "community-auto-it", "community-aws-cdk", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-hexo", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-linux-snap", "community-logtalk", "community-move", "community-nasa-specs-intact", "community-nix", "community-open-ssl", "community-open-tofu", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-terragrunt", "community-toit", "community-ui-path", "community-v", "community-xilinx"]
 community-alteryx = []
 community-altium-designer = []
 community-auto-it = []
@@ -36,6 +36,7 @@ community-move = []
 community-nasa-specs-intact = []
 community-nix = []
 community-open-ssl = []
+community-open-tofu = []
 community-php-bitrix = []
 community-php-code-sniffer = []
 community-php-drupal7 = []
@@ -281,7 +282,7 @@ authors = ["Félix Saparelli <felix@passcod.name>"]
 categories = ["development-tools", "filesystem", "no-std"]
 exclude = ["/.github", "/updater", "/gitignores"]
 keywords = ["gitignore", "embed", "git"]
-version = "2.5.1"
+version = "2.6.0"
 [package.metadata.gitignores]
-commit = "76739a38b56907118c5a880d63250c99d5690a5a"
-content_hash = "51a1fa8db1bcb010b690fe12c28143e5f0314b8f5e1e391c50285b2ab06a267e"
+commit = "b1ffcdbb332cf53a478f08f0db285e12c7f3d281"
+content_hash = "263e234fa8b24c4e0acd5d6973b0a9ff66f4e3df3752708d55a6dc505a32152a"
