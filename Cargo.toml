@@ -282,7 +282,7 @@ authors = ["Félix Saparelli <felix@passcod.name>"]
 categories = ["development-tools", "filesystem", "no-std"]
 exclude = ["/.github", "/updater", "/gitignores"]
 keywords = ["gitignore", "embed", "git"]
-version = "2.6.1"
+version = "2.6.2"
 [package.metadata.gitignores]
-commit = "95c8bf079cf5600d967696c7f253e352ae77d83d"
-content_hash = "42fe585b666579ff5c8e162b9ce97bf163c11ba2cf9473d881de424daae8977e"
+commit = "ef51696ad769a2c7321ed16e9d92cf91335067a2"
+content_hash = "650a86aebf0e761f1775927f8f089f087ed9b4c01a99681929f3f017802e44a6"
