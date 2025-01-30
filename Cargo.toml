@@ -1,5 +1,5 @@
 [features]
-community = ["community-alteryx", "community-altium-designer", "community-auto-it", "community-automation-studio", "community-aws-cdk", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-hexo", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-linux-snap", "community-logtalk", "community-move", "community-nasa-specs-intact", "community-nix", "community-open-ssl", "community-open-tofu", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-terragrunt", "community-toit", "community-ui-path", "community-v", "community-xilinx"]
+community = ["community-alteryx", "community-altium-designer", "community-auto-it", "community-automation-studio", "community-aws-cdk", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-hexo", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-linux-snap", "community-logtalk", "community-move", "community-nasa-specs-intact", "community-nix", "community-obsidian-notes-and-core-configuration", "community-obsidian-notes-and-extended-configuration", "community-obsidian-notes-only", "community-open-ssl", "community-open-tofu", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-terragrunt", "community-toit", "community-ui-path", "community-v", "community-xilinx"]
 community-alteryx = []
 community-altium-designer = []
 community-auto-it = []
@@ -36,6 +36,9 @@ community-logtalk = []
 community-move = []
 community-nasa-specs-intact = []
 community-nix = []
+community-obsidian-notes-and-core-configuration = []
+community-obsidian-notes-and-extended-configuration = []
+community-obsidian-notes-only = []
 community-open-ssl = []
 community-open-tofu = []
 community-php-bitrix = []
@@ -287,7 +290,7 @@ authors = ["Félix Saparelli <felix@passcod.name>"]
 categories = ["development-tools", "filesystem", "no-std"]
 exclude = ["/.github", "/updater", "/gitignores"]
 keywords = ["gitignore", "embed", "git"]
-version = "2.9.1"
+version = "2.10.0"
 [package.metadata.gitignores]
-commit = "d5ac09e92f96b4fe161d6086912f50d431c38926"
-content_hash = "930c210cbf8b5df50b5cf9d3b837047149f2bc58fea7d004ad24e7013f2a100f"
+commit = "297239c101dcfdfae7e75757ed17ed993df0b4eb"
+content_hash = "7e800fbad700e12426807b0096095d780dfbd4224585f922d07e50e535459131"
