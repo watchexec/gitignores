@@ -58,7 +58,7 @@ jobs:
 
       - name: Output
         id: output
-        run: echo "::set-output name=has_new_version::${{ contains(env.new_version, '.') }}"
+        run: echo "has_new_version=${{ contains(env.new_version, '.') }}" >> $GITHUB_OUTPUT
     outputs:
       has_new_version: "${{ steps.output.outputs.has_new_version }}"
   release:
