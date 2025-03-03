@@ -12,27 +12,13 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: ~/.cargo/registry
-          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('.github/workflows/check.yml') }}
+      - uses: actions/checkout@v4
+      - name: Configure toolchain
+        run: |
+          rustup toolchain install --profile minimal --no-self-update stable
+          rustup default stable
+          rustup component add clippy
+      - uses: Swatinem/rust-cache@v2
 
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - name: Add clippy
-        run: rustup component add clippy
-
-      - name: Check
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
-          args: --manifest-path updater/Cargo.toml
-      - name: Clippy
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: --manifest-path updater/Cargo.toml
+      - run: check --manifest-path updater/Cargo.toml
+      - run: clippy --manifest-path updater/Cargo.toml

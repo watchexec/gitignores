@@ -5,33 +5,25 @@ on:
   schedule:
     - cron: '38 13 * * *'
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cargo/registry
-            updater/target
-          key: ${{ runner.os }}-cargo-and-updater-${{ hashFiles('.github/workflows/*.yml') }}
+      - uses: actions/checkout@v4
+      - name: Configure toolchain
+        run: |
+          rustup toolchain install --profile minimal --no-self-update stable
+          rustup default stable
 
-      - uses: actions-rs/toolchain@v1
-        with:
-          target: ${{ matrix.target }}
-          toolchain: stable
-          profile: minimal
-          override: true
+      - uses: Swatinem/rust-cache@v2
 
-      - name: Build updater
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --manifest-path updater/Cargo.toml
+      - run: cargo build --manifest-path updater/Cargo.toml
 
       - name: Clone github/gitignore
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: github/gitignore
           path: gitignores
@@ -47,27 +39,15 @@ jobs:
             --gh-env-file "$GITHUB_ENV"
           rm -rf gitignores
 
-      - name: Check generated code
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
+      - run: cargo check
+      - run: cargo fmt
+      - run: cargo check
 
-      - name: Format
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
+      - run: |
+          rustup toolchain install --profile minimal --no-self-update 1.37.0
+          rustup default 1.37.0
 
-      - name: Install MSRV
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: "1.37.0"
-          override: true
-
-      - name: Check generated code with MSRV
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
+      - run: cargo check
 
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
