@@ -1,5 +1,5 @@
 [features]
-community = ["community-alteryx", "community-altium-designer", "community-auto-it", "community-automation-studio", "community-aws-cdk", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-dotter", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-hexo", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-libogc", "community-linux-snap", "community-logtalk", "community-move", "community-nasa-specs-intact", "community-obsidian-notes-and-core-configuration", "community-obsidian-notes-and-extended-configuration", "community-obsidian-notes-only", "community-open-ssl", "community-open-tofu", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-terragrunt", "community-toit", "community-ui-path", "community-v", "community-xilinx"]
+community = ["community-alteryx", "community-altium-designer", "community-auto-it", "community-automation-studio", "community-aws-cdk", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-dotter", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-hexo", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-libogc", "community-linux-snap", "community-logtalk", "community-move", "community-nasa-specs-intact", "community-obsidian-notes-and-core-configuration", "community-obsidian-notes-and-extended-configuration", "community-obsidian-notes-only", "community-open-ssl", "community-open-tofu", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-terragrunt", "community-toit", "community-ui-path", "community-utau", "community-v", "community-xilinx"]
 community-alteryx = []
 community-altium-designer = []
 community-auto-it = []
@@ -62,6 +62,7 @@ community-strapi = []
 community-terragrunt = []
 community-toit = []
 community-ui-path = []
+community-utau = []
 community-v = []
 community-xilinx = []
 default = ["std", "community", "global", "root"]
@@ -303,7 +304,7 @@ authors = ["Félix Saparelli <felix@passcod.name>"]
 categories = ["development-tools", "filesystem", "no-std"]
 exclude = ["/.github", "/updater", "/gitignores"]
 keywords = ["gitignore", "embed", "git"]
-version = "4.1.2"
+version = "4.2.0"
 [package.metadata.gitignores]
-commit = "136f98dd58a401fe63265e5afa4c4c058c6d915b"
-content_hash = "91c7d83b82db763cd63eadca9613fe7e3cc5ad52c4263b5fdfad62fefc9662ed"
+commit = "f752d0799fb7e690bfb888d5cd4d453d2858a865"
+content_hash = "1f1ad42c0bceac61ca88a4db0c0ea69f3174d7261ae47c31d3ca35cd46a2526f"
