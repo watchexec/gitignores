@@ -1,4 +1,3 @@
-
 use crate::GitIgnore;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -599,6 +598,155 @@ impl GitIgnore for Global {
 		#[cfg(feature = "global-xilinx-ise")]
 		list.push("XilinxIse");
 		list
+	}
+
+	fn get(variant: &'static str) -> Option<Self> {
+		#[allow(unreachable_code)]
+		Some(match variant {
+			#[cfg(feature = "global-al")]
+			"Al" => Self::Al,
+			#[cfg(feature = "global-anjuta")]
+			"Anjuta" => Self::Anjuta,
+			#[cfg(feature = "global-ansible")]
+			"Ansible" => Self::Ansible,
+			#[cfg(feature = "global-archives")]
+			"Archives" => Self::Archives,
+			#[cfg(feature = "global-backup")]
+			"Backup" => Self::Backup,
+			#[cfg(feature = "global-bazaar")]
+			"Bazaar" => Self::Bazaar,
+			#[cfg(feature = "global-bricx-cc")]
+			"BricxCc" => Self::BricxCc,
+			#[cfg(feature = "global-calabash")]
+			"Calabash" => Self::Calabash,
+			#[cfg(feature = "global-cloud9")]
+			"Cloud9" => Self::Cloud9,
+			#[cfg(feature = "global-code-kit")]
+			"CodeKit" => Self::CodeKit,
+			#[cfg(feature = "global-cursor")]
+			"Cursor" => Self::Cursor,
+			#[cfg(feature = "global-cvs")]
+			"Cvs" => Self::Cvs,
+			#[cfg(feature = "global-dart-editor")]
+			"DartEditor" => Self::DartEditor,
+			#[cfg(feature = "global-diff")]
+			"Diff" => Self::Diff,
+			#[cfg(feature = "global-dreamweaver")]
+			"Dreamweaver" => Self::Dreamweaver,
+			#[cfg(feature = "global-dropbox")]
+			"Dropbox" => Self::Dropbox,
+			#[cfg(feature = "global-eclipse")]
+			"Eclipse" => Self::Eclipse,
+			#[cfg(feature = "global-eiffel-studio")]
+			"EiffelStudio" => Self::EiffelStudio,
+			#[cfg(feature = "global-emacs")]
+			"Emacs" => Self::Emacs,
+			#[cfg(feature = "global-ensime")]
+			"Ensime" => Self::Ensime,
+			#[cfg(feature = "global-espresso")]
+			"Espresso" => Self::Espresso,
+			#[cfg(feature = "global-flex-builder")]
+			"FlexBuilder" => Self::FlexBuilder,
+			#[cfg(feature = "global-gpg")]
+			"Gpg" => Self::Gpg,
+			#[cfg(feature = "global-images")]
+			"Images" => Self::Images,
+			#[cfg(feature = "global-j-developer")]
+			"JDeveloper" => Self::JDeveloper,
+			#[cfg(feature = "global-j-env")]
+			"JEnv" => Self::JEnv,
+			#[cfg(feature = "global-jet-brains")]
+			"JetBrains" => Self::JetBrains,
+			#[cfg(feature = "global-k-develop4")]
+			"KDevelop4" => Self::KDevelop4,
+			#[cfg(feature = "global-kate")]
+			"Kate" => Self::Kate,
+			#[cfg(feature = "global-lazarus")]
+			"Lazarus" => Self::Lazarus,
+			#[cfg(feature = "global-libre-office")]
+			"LibreOffice" => Self::LibreOffice,
+			#[cfg(feature = "global-linux")]
+			"Linux" => Self::Linux,
+			#[cfg(feature = "global-ly-x")]
+			"LyX" => Self::LyX,
+			#[cfg(feature = "global-mac-os")]
+			"MacOs" => Self::MacOs,
+			#[cfg(feature = "global-matlab")]
+			"Matlab" => Self::Matlab,
+			#[cfg(feature = "global-mercurial")]
+			"Mercurial" => Self::Mercurial,
+			#[cfg(feature = "global-metals")]
+			"Metals" => Self::Metals,
+			#[cfg(feature = "global-microsoft-office")]
+			"MicrosoftOffice" => Self::MicrosoftOffice,
+			#[cfg(feature = "global-model-sim")]
+			"ModelSim" => Self::ModelSim,
+			#[cfg(feature = "global-momentics")]
+			"Momentics" => Self::Momentics,
+			#[cfg(feature = "global-mono-develop")]
+			"MonoDevelop" => Self::MonoDevelop,
+			#[cfg(feature = "global-net-beans")]
+			"NetBeans" => Self::NetBeans,
+			#[cfg(feature = "global-ninja")]
+			"Ninja" => Self::Ninja,
+			#[cfg(feature = "global-notepad-pp")]
+			"NotepadPp" => Self::NotepadPp,
+			#[cfg(feature = "global-octave")]
+			"Octave" => Self::Octave,
+			#[cfg(feature = "global-otto")]
+			"Otto" => Self::Otto,
+			#[cfg(feature = "global-p-so-c-creator")]
+			"PSoCCreator" => Self::PSoCCreator,
+			#[cfg(feature = "global-patch")]
+			"Patch" => Self::Patch,
+			#[cfg(feature = "global-platform-io")]
+			"PlatformIo" => Self::PlatformIo,
+			#[cfg(feature = "global-pu-tty")]
+			"PuTty" => Self::PuTty,
+			#[cfg(feature = "global-redcar")]
+			"Redcar" => Self::Redcar,
+			#[cfg(feature = "global-redis")]
+			"Redis" => Self::Redis,
+			#[cfg(feature = "global-sbt")]
+			"Sbt" => Self::Sbt,
+			#[cfg(feature = "global-slick-edit")]
+			"SlickEdit" => Self::SlickEdit,
+			#[cfg(feature = "global-stata")]
+			"Stata" => Self::Stata,
+			#[cfg(feature = "global-sublime-text")]
+			"SublimeText" => Self::SublimeText,
+			#[cfg(feature = "global-svn")]
+			"Svn" => Self::Svn,
+			#[cfg(feature = "global-syncthing")]
+			"Syncthing" => Self::Syncthing,
+			#[cfg(feature = "global-synopsys-vcs")]
+			"SynopsysVcs" => Self::SynopsysVcs,
+			#[cfg(feature = "global-tags")]
+			"Tags" => Self::Tags,
+			#[cfg(feature = "global-text-mate")]
+			"TextMate" => Self::TextMate,
+			#[cfg(feature = "global-tortoise-git")]
+			"TortoiseGit" => Self::TortoiseGit,
+			#[cfg(feature = "global-vagrant")]
+			"Vagrant" => Self::Vagrant,
+			#[cfg(feature = "global-vim")]
+			"Vim" => Self::Vim,
+			#[cfg(feature = "global-virtual-env")]
+			"VirtualEnv" => Self::VirtualEnv,
+			#[cfg(feature = "global-virtuoso")]
+			"Virtuoso" => Self::Virtuoso,
+			#[cfg(feature = "global-visual-studio-code")]
+			"VisualStudioCode" => Self::VisualStudioCode,
+			#[cfg(feature = "global-web-methods")]
+			"WebMethods" => Self::WebMethods,
+			#[cfg(feature = "global-windows")]
+			"Windows" => Self::Windows,
+			#[cfg(feature = "global-xcode")]
+			"Xcode" => Self::Xcode,
+			#[cfg(feature = "global-xilinx-ise")]
+			"XilinxIse" => Self::XilinxIse,
+			_ => return None,
+		})
 	}
 }
 

@@ -333,6 +333,14 @@ impl Collection {
 				{list}
 				list
 			}}
+
+			fn get(variant: &'static str) -> Option<Self> {{
+				#[allow(unreachable_code)]
+				Some(match variant {{
+					{gets}
+					_ => return None,
+				}})
+			}}
 		}}
 
 		#[cfg(all(feature = \"std\", not(feature = \"no-contents\")))]
@@ -386,6 +394,16 @@ impl Collection {
 				))
 				.collect::<Vec<_>>()
 				.join(" "),
+			gets = self
+				.variants
+				.iter()
+				.map(|v| format!(
+					"#[cfg(feature = \"{feature}\")] \"{variant}\" => Self::{variant},",
+					feature = v.feature,
+					variant = v.variant
+				))
+				.collect::<Vec<_>>()
+				.join("\n")
 		)
 	}
 

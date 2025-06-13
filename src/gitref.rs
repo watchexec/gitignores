@@ -1,4 +1,3 @@
-
 /// The git commit hash of the gitignore repository when this crate was generated.
 pub const GIT_COMMIT_REF: &str = "f84aa8dcb17a42f91e5becf55ebdbf4aec83e19a";
 

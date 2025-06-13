@@ -1,4 +1,3 @@
-
 use crate::GitIgnore;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -555,6 +554,143 @@ impl GitIgnore for Community {
 		#[cfg(feature = "community-xilinx")]
 		list.push("Xilinx");
 		list
+	}
+
+	fn get(variant: &'static str) -> Option<Self> {
+		#[allow(unreachable_code)]
+		Some(match variant {
+			#[cfg(feature = "community-alteryx")]
+			"Alteryx" => Self::Alteryx,
+			#[cfg(feature = "community-altium-designer")]
+			"AltiumDesigner" => Self::AltiumDesigner,
+			#[cfg(feature = "community-auto-it")]
+			"AutoIt" => Self::AutoIt,
+			#[cfg(feature = "community-automation-studio")]
+			"AutomationStudio" => Self::AutomationStudio,
+			#[cfg(feature = "community-aws-cdk")]
+			"AwsCdk" => Self::AwsCdk,
+			#[cfg(feature = "community-aws-sam")]
+			"AwsSam" => Self::AwsSam,
+			#[cfg(feature = "community-b4x")]
+			"B4x" => Self::B4x,
+			#[cfg(feature = "community-bazel")]
+			"Bazel" => Self::Bazel,
+			#[cfg(feature = "community-beef")]
+			"Beef" => Self::Beef,
+			#[cfg(feature = "community-dot-net-core")]
+			"DotNetCore" => Self::DotNetCore,
+			#[cfg(feature = "community-dot-net-infor-cms")]
+			"DotNetInforCms" => Self::DotNetInforCms,
+			#[cfg(feature = "community-dot-net-kentico")]
+			"DotNetKentico" => Self::DotNetKentico,
+			#[cfg(feature = "community-dot-net-umbraco")]
+			"DotNetUmbraco" => Self::DotNetUmbraco,
+			#[cfg(feature = "community-dotter")]
+			"Dotter" => Self::Dotter,
+			#[cfg(feature = "community-elixir-phoenix")]
+			"ElixirPhoenix" => Self::ElixirPhoenix,
+			#[cfg(feature = "community-embedded-atmel-studio")]
+			"EmbeddedAtmelStudio" => Self::EmbeddedAtmelStudio,
+			#[cfg(feature = "community-embedded-esp-idf")]
+			"EmbeddedEspIdf" => Self::EmbeddedEspIdf,
+			#[cfg(feature = "community-embedded-iar-ewarm")]
+			"EmbeddedIarEwarm" => Self::EmbeddedIarEwarm,
+			#[cfg(feature = "community-embedded-u-vision")]
+			"EmbeddedUVision" => Self::EmbeddedUVision,
+			#[cfg(feature = "community-exercism")]
+			"Exercism" => Self::Exercism,
+			#[cfg(feature = "community-gnome-gnome-shell-extension")]
+			"GnomeGnomeShellExtension" => Self::GnomeGnomeShellExtension,
+			#[cfg(feature = "community-golang-go-allow-list")]
+			"GolangGoAllowList" => Self::GolangGoAllowList,
+			#[cfg(feature = "community-golang-hugo")]
+			"GolangHugo" => Self::GolangHugo,
+			#[cfg(feature = "community-gretl")]
+			"Gretl" => Self::Gretl,
+			#[cfg(feature = "community-hexo")]
+			"Hexo" => Self::Hexo,
+			#[cfg(feature = "community-java-j-boss4")]
+			"JavaJBoss4" => Self::JavaJBoss4,
+			#[cfg(feature = "community-java-j-boss6")]
+			"JavaJBoss6" => Self::JavaJBoss6,
+			#[cfg(feature = "community-java-script-cordova")]
+			"JavaScriptCordova" => Self::JavaScriptCordova,
+			#[cfg(feature = "community-java-script-meteor")]
+			"JavaScriptMeteor" => Self::JavaScriptMeteor,
+			#[cfg(feature = "community-java-script-n-wjs")]
+			"JavaScriptNWjs" => Self::JavaScriptNWjs,
+			#[cfg(feature = "community-java-script-vue")]
+			"JavaScriptVue" => Self::JavaScriptVue,
+			#[cfg(feature = "community-lens-studio")]
+			"LensStudio" => Self::LensStudio,
+			#[cfg(feature = "community-libogc")]
+			"Libogc" => Self::Libogc,
+			#[cfg(feature = "community-linux-snap")]
+			"LinuxSnap" => Self::LinuxSnap,
+			#[cfg(feature = "community-logtalk")]
+			"Logtalk" => Self::Logtalk,
+			#[cfg(feature = "community-move")]
+			"Move" => Self::Move,
+			#[cfg(feature = "community-nasa-specs-intact")]
+			"NasaSpecsIntact" => Self::NasaSpecsIntact,
+			#[cfg(feature = "community-obsidian-notes-and-core-configuration")]
+			"ObsidianNotesAndCoreConfiguration" => Self::ObsidianNotesAndCoreConfiguration,
+			#[cfg(feature = "community-obsidian-notes-and-extended-configuration")]
+			"ObsidianNotesAndExtendedConfiguration" => Self::ObsidianNotesAndExtendedConfiguration,
+			#[cfg(feature = "community-obsidian-notes-only")]
+			"ObsidianNotesOnly" => Self::ObsidianNotesOnly,
+			#[cfg(feature = "community-open-ssl")]
+			"OpenSsl" => Self::OpenSsl,
+			#[cfg(feature = "community-open-tofu")]
+			"OpenTofu" => Self::OpenTofu,
+			#[cfg(feature = "community-php-bitrix")]
+			"PhpBitrix" => Self::PhpBitrix,
+			#[cfg(feature = "community-php-code-sniffer")]
+			"PhpCodeSniffer" => Self::PhpCodeSniffer,
+			#[cfg(feature = "community-php-drupal7")]
+			"PhpDrupal7" => Self::PhpDrupal7,
+			#[cfg(feature = "community-php-jigsaw")]
+			"PhpJigsaw" => Self::PhpJigsaw,
+			#[cfg(feature = "community-php-magento1")]
+			"PhpMagento1" => Self::PhpMagento1,
+			#[cfg(feature = "community-php-magento2")]
+			"PhpMagento2" => Self::PhpMagento2,
+			#[cfg(feature = "community-php-pimcore")]
+			"PhpPimcore" => Self::PhpPimcore,
+			#[cfg(feature = "community-php-think-php")]
+			"PhpThinkPhp" => Self::PhpThinkPhp,
+			#[cfg(feature = "community-puppet")]
+			"Puppet" => Self::Puppet,
+			#[cfg(feature = "community-python-jupyter-notebooks")]
+			"PythonJupyterNotebooks" => Self::PythonJupyterNotebooks,
+			#[cfg(feature = "community-python-nikola")]
+			"PythonNikola" => Self::PythonNikola,
+			#[cfg(feature = "community-racket")]
+			"Racket" => Self::Racket,
+			#[cfg(feature = "community-red")]
+			"Red" => Self::Red,
+			#[cfg(feature = "community-ros2")]
+			"Ros2" => Self::Ros2,
+			#[cfg(feature = "community-sp-fx")]
+			"SpFx" => Self::SpFx,
+			#[cfg(feature = "community-splunk")]
+			"Splunk" => Self::Splunk,
+			#[cfg(feature = "community-strapi")]
+			"Strapi" => Self::Strapi,
+			#[cfg(feature = "community-terragrunt")]
+			"Terragrunt" => Self::Terragrunt,
+			#[cfg(feature = "community-toit")]
+			"Toit" => Self::Toit,
+			#[cfg(feature = "community-ui-path")]
+			"UiPath" => Self::UiPath,
+			#[cfg(feature = "community-utau")]
+			"Utau" => Self::Utau,
+			#[cfg(feature = "community-v")]
+			"V" => Self::V,
+			#[cfg(feature = "community-xilinx")]
+			"Xilinx" => Self::Xilinx,
+			_ => return None,
+		})
 	}
 }
 

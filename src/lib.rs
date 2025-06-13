@@ -32,8 +32,11 @@
 //!     /// The full path of the gitignore relative to repo root
 //!     fn file_path(self) -> &'static str;
 //!
-//!     /// The list of all included gitignores
+//!     /// The list of all included gitignores, by their variant names
 //!     fn list() -> Vec<&'static str>;
+//!
+//!     /// Retrieve a gitignore dynamically, by its variant name
+//!     fn get(variant: &'static str) -> Option<Self>;
 //! }
 //! ```
 //!
