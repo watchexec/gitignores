@@ -20,5 +20,5 @@ jobs:
           rustup component add clippy
       - uses: Swatinem/rust-cache@v2
 
-      - run: check --manifest-path updater/Cargo.toml
-      - run: clippy --manifest-path updater/Cargo.toml
+      - run: cargo check --manifest-path updater/Cargo.toml
+      - run: cargo clippy --manifest-path updater/Cargo.toml
