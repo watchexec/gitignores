@@ -1,6 +1,6 @@
 
 /// The git commit hash of the gitignore repository when this crate was generated.
-pub const GIT_COMMIT_REF: &str = "7ffb40c732473c1ba021b8236f0d799802a93cd3";
+pub const GIT_COMMIT_REF: &str = "1a3a16e9982022d5467a443172481a8b3b7f805e";
 
 /// The BLAKE3 hash of the contents of every file in generator order.
-pub const CONTENT_HASH: &str = "b1a64ca87976e8a715ce9194294bdc00ef1ce0e3e5afbbb1884d768deef3fd19";
+pub const CONTENT_HASH: &str = "8ae60b8b4384c55b15e972df9ed4216e045d2e74197e3910cf4f74f2130fa271";
