@@ -1,5 +1,5 @@
 [features]
-community = ["community-alteryx", "community-altium-designer", "community-auto-it", "community-automation-studio", "community-aws-cdk", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-dotter", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-hexo", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-expo", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-libogc", "community-linux-snap", "community-logtalk", "community-meta-trader5", "community-move", "community-nasa-specs-intact", "community-obsidian-notes-and-core-configuration", "community-obsidian-notes-and-extended-configuration", "community-obsidian-notes-only", "community-open-ssl", "community-open-tofu", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-terragrunt", "community-toit", "community-ui-path", "community-utau", "community-v", "community-xilinx"]
+community = ["community-alteryx", "community-altium-designer", "community-auto-it", "community-automation-studio", "community-aws-cdk", "community-aws-sam", "community-b4x", "community-bazel", "community-beef", "community-box-lang-cold-box", "community-cfml-cold-box", "community-dot-net-core", "community-dot-net-infor-cms", "community-dot-net-kentico", "community-dot-net-umbraco", "community-dotter", "community-elixir-phoenix", "community-embedded-atmel-studio", "community-embedded-esp-idf", "community-embedded-iar-ewarm", "community-embedded-u-vision", "community-exercism", "community-gnome-gnome-shell-extension", "community-golang-go-allow-list", "community-golang-hugo", "community-gretl", "community-hexo", "community-java-j-boss4", "community-java-j-boss6", "community-java-script-cordova", "community-java-script-expo", "community-java-script-meteor", "community-java-script-n-wjs", "community-java-script-vue", "community-lens-studio", "community-libogc", "community-linux-snap", "community-logtalk", "community-meta-trader5", "community-move", "community-nasa-specs-intact", "community-obsidian-notes-and-core-configuration", "community-obsidian-notes-and-extended-configuration", "community-obsidian-notes-only", "community-open-ssl", "community-open-tofu", "community-php-bitrix", "community-php-code-sniffer", "community-php-drupal7", "community-php-jigsaw", "community-php-magento1", "community-php-magento2", "community-php-pimcore", "community-php-think-php", "community-puppet", "community-python-jupyter-notebooks", "community-python-nikola", "community-racket", "community-red", "community-ros2", "community-sp-fx", "community-splunk", "community-strapi", "community-terragrunt", "community-toit", "community-ui-path", "community-utau", "community-v", "community-xilinx"]
 community-alteryx = []
 community-altium-designer = []
 community-auto-it = []
@@ -9,6 +9,8 @@ community-aws-sam = []
 community-b4x = []
 community-bazel = []
 community-beef = []
+community-box-lang-cold-box = []
+community-cfml-cold-box = []
 community-dot-net-core = []
 community-dot-net-infor-cms = []
 community-dot-net-kentico = []
@@ -314,7 +316,7 @@ authors = ["Félix Saparelli <felix@passcod.name>"]
 categories = ["development-tools", "filesystem", "no-std"]
 exclude = ["/.github", "/updater", "/gitignores"]
 keywords = ["gitignore", "embed", "git"]
-version = "4.9.1"
+version = "4.10.0"
 [package.metadata.gitignores]
-commit = "9255d4cfe4bb357f6598a1ec252543900ca89d4e"
-content_hash = "8e69e555d3be26309da66b77c6bc342c95d940e2884a07ba2f39ac16dc96c6be"
+commit = "e5379849ade0efbda2b3dc5a07afd6472b90d47b"
+content_hash = "d1921315410879907614bc83ef69880111b37bdd875677a43591b6cecde68756"
